@@ -375,6 +375,19 @@ If you want only the top few golden features, use `max_selected_features`. For e
 gf = GoldenFeatures(max_selected_features=3, verbose=1)
 ```
 
+## Related Projects
+
+If you find this library useful, you might also be interested in other tools from the MLJAR ecosystem:
+
+- **AutoML (mljar-supervised)** – automated model training and hyperparameter tuning  
+  https://github.com/mljar/mljar-supervised
+
+- **Mercury** – turn Jupyter Notebooks into interactive web apps  
+  https://github.com/mljar/mercury
+
+- **MLJAR Studio** – a desktop IDE for data science with built-in AutoML and AI assistant  
+  https://mljar.com/studio
+
 ## License
 
 Apache 2.0
