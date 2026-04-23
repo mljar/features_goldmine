@@ -1,4 +1,4 @@
-![features-goldmine banner](assets/features_goldmine_banner.jpg)
+![features-goldmine banner](https://raw.githubusercontent.com/mljar/features_goldmine/main/assets/features_goldmine_banner.jpg)
 
 # Features Goldmine
 
@@ -89,63 +89,63 @@ RMSE improvement vs baseline: +0.65%
 
 </details>
 
-## Iris Multiclass Example
+## Breast Cancer Binary Example
 
 ```bash
-uv run python examples/iris_multiclass.py
+uv run python examples/breast_cancer_binary.py
 ```
 
 ```text
-Baseline LogLoss (single split): 0.801166
-Golden   LogLoss (single split): 0.279341
-Delta LogLoss (golden - baseline): -0.521825
-LogLoss improvement vs baseline: +65.13%
+Baseline AUC (single split): 0.992872
+Golden   AUC (single split): 0.995178
+Delta AUC (golden - baseline): +0.002306
+AUC improvement vs baseline: +0.23%
 ```
 
 Selected examples of created features:
 
 ```text
-petal_length_cm_mul_petal_width_cm
-rule_petal_length_cm_gt_2p450_and_petal_width_cm_le_1p550_002
-sepal_length_cm_div_petal_width_cm
-pca_comp_001
-petal_width_cm_mul_sepal_length_cm
+worst_area_mul_worst_concave_points
+worst_perimeter_mul_worst_smoothness
+rule_worst_perimeter_le_112p800_and_worst_concave_points_le_0p146_013
+worst_area_mul_worst_texture
+area_error_mul_mean_concave_points
 ```
 
 <details>
-<summary>Full Iris Multiclass training output</summary>
+<summary>Full Breast Cancer Binary training output</summary>
 
 ```text
-uv run python examples/iris_multiclass.py
-Dataset: iris
-Rows=150, Features=4, Classes=3
+uv run python examples/breast_cancer_binary.py
+Dataset: breast_cancer
+Rows=569, Features=30
 Mode: single train/test split (test_size=0.25), selectivity=balanced, gf_verbose=1
 [GoldenFeatures] fit: validating inputs
-[GoldenFeatures] fit: task=multiclass, rows=112, total_features=4, numeric_features=4, categorical_features=0, selectivity=balanced, max_selected_features=None, enabled_strategies=['categorical_frequency', 'categorical_group_deviation', 'categorical_hash_cross', 'categorical_oof_target', 'categorical_prototypes', 'context_knn', 'grouped_row_stats', 'path', 'projection_ica', 'projection_pca', 'residual_numeric']
+[GoldenFeatures] fit: task=binary, rows=426, total_features=30, numeric_features=30, categorical_features=0, selectivity=balanced, max_selected_features=None, enabled_strategies=['categorical_frequency', 'categorical_group_deviation', 'categorical_hash_cross', 'categorical_oof_target', 'categorical_prototypes', 'context_knn', 'grouped_row_stats', 'path', 'projection_ica', 'projection_pca', 'residual_numeric']
 [GoldenFeatures] stage1: training fast LightGBM on raw features (3 repeats)
-[GoldenFeatures] stage1: repeat=1/3, seed=42, paths=208
-[GoldenFeatures] stage1: repeat=2/3, seed=143, paths=206
-[GoldenFeatures] stage1: repeat=3/3, seed=244, paths=208
-[GoldenFeatures] stage1: trained with 4 raw features
-[GoldenFeatures] stage2: extracted total 622 paths across repeats
+[GoldenFeatures] stage1: repeat=1/3, seed=42, paths=572
+[GoldenFeatures] stage1: repeat=2/3, seed=143, paths=567
+[GoldenFeatures] stage1: repeat=3/3, seed=244, paths=572
+[GoldenFeatures] stage1: trained with 30 raw features
+[GoldenFeatures] stage2: extracted total 1711 paths across repeats
 [GoldenFeatures] stage3: ranking feature interactions
-[GoldenFeatures] stage3: ranked 5 interaction pairs
+[GoldenFeatures] stage3: ranked 235 interaction pairs
 [GoldenFeatures] stage4: building candidate engineered features (enabled=['categorical_frequency', 'categorical_group_deviation', 'categorical_hash_cross', 'categorical_oof_target', 'categorical_prototypes', 'context_knn', 'grouped_row_stats', 'path', 'projection_ica', 'projection_pca', 'residual_numeric'])
-[GoldenFeatures] stage4: generated 45 path candidates + 3 projection candidates + 12 grouped-stats candidates = 60 total
+[GoldenFeatures] stage4: generated 170 path candidates + 5 projection candidates + 5 ica candidates + 48 grouped-stats candidates + 30 context-knn candidates = 258 total
 [GoldenFeatures] stage5: quick filtering candidates
-[GoldenFeatures] stage5: kept 38 candidates, rejected 22
+[GoldenFeatures] stage5: kept 170 candidates, rejected 88
 [GoldenFeatures] stage6: survival competition with repeated LightGBM
-[GoldenFeatures] stage6: 9 candidates survived
+[GoldenFeatures] stage6: 13 candidates survived
 [GoldenFeatures] stage7: redundancy pruning
-[GoldenFeatures] stage7: final survivors after pruning = 9
-[GoldenFeatures] fit: completed (candidates=60, after_filter=38, survivors=9, final=9)
-[GoldenFeatures] transform: generating 9 golden features
-[GoldenFeatures] transform: generating 9 golden features
-[Split] created=9 features: ['petal_length_cm_mul_petal_width_cm', 'rule_petal_length_cm_gt_2p450_and_petal_width_cm_le_1p550_002', 'sepal_length_cm_div_petal_width_cm', 'pca_comp_001', 'petal_length_cm_absdiff_sepal_width_cm', 'petal_width_cm_mul_sepal_length_cm', 'petal_width_cm_div_sepal_width_cm', 'grpstat_003_std', 'petal_length_cm_absdiff_sepal_length_cm']
-Baseline LogLoss (single split): 0.801166
-Golden   LogLoss (single split): 0.279341
-Delta LogLoss (golden - baseline): -0.521825
-LogLoss improvement vs baseline: +65.13%
+[GoldenFeatures] stage7: final survivors after pruning = 13
+[GoldenFeatures] fit: completed (candidates=258, after_filter=170, survivors=13, final=13)
+[GoldenFeatures] transform: generating 13 golden features
+[GoldenFeatures] transform: generating 13 golden features
+[Split] created=13 features: ['worst_area_mul_worst_concave_points', 'worst_perimeter_mul_worst_smoothness', 'rule_worst_perimeter_le_112p800_and_worst_concave_points_le_0p146_013', 'worst_area_mul_worst_texture', 'area_error_mul_mean_concave_points', 'grpstat_004_mean', 'worst_perimeter_mul_worst_texture', 'area_error_mul_worst_concave_points', 'mean_texture_mul_worst_radius', 'worst_perimeter_mul_worst_symmetry', 'mean_concave_points_mul_worst_texture', 'ica_comp_003', 'mean_texture_mul_worst_area']
+Baseline AUC (single split): 0.992872
+Golden   AUC (single split): 0.995178
+Delta AUC (golden - baseline): +0.002306
+AUC improvement vs baseline: +0.23%
 ```
 
 </details>
@@ -182,7 +182,7 @@ raw X, y
   -> return final golden features
 ```
 
-![features engineering pipeline](assets/features_engineering_pipeline.jpg)
+![features engineering pipeline](https://raw.githubusercontent.com/mljar/features_goldmine/main/assets/features_engineering_pipeline.jpg)
 
 ## Performance
 
@@ -379,4 +379,4 @@ gf = GoldenFeatures(max_selected_features=3, verbose=1)
 
 Apache 2.0
 
-![features-goldmine footer](assets/features_goldmine_footer.jpg)
+![features-goldmine footer](https://raw.githubusercontent.com/mljar/features_goldmine/main/assets/features_goldmine_footer.jpg)

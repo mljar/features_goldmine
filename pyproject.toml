@@ -4,14 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "features-goldmine"
-version = "1.0.0"
-description = "Fast engineered feature discovery from LightGBM paths"
+version = "1.0.1"
+description = "Automatic feature engineering for tabular machine learning"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "features_goldmine"}]
 keywords = ["feature-engineering", "lightgbm", "tabular-data", "machine-learning"]
 classifiers = [
-  "Development Status :: 3 - Alpha",
+  "Development Status :: 4 - Beta",
   "Intended Audience :: Developers",
   "Intended Audience :: Science/Research",
   "Programming Language :: Python :: 3",

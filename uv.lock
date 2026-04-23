@@ -34,7 +34,7 @@ wheels = [
 
 [[package]]
 name = "features-goldmine"
-version = "1.0.0"
+version = "1.0.1"
 source = { editable = "." }
 dependencies = [
     { name = "lightgbm" },
